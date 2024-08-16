@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Userdetails List</title>
+    <style>
+        /* Body and header styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 10px 20px;
+        }
+        .navbar a {
+            float: left;
+            color: #fff;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .navbar a.right {
+            float: right;
+        }
+
+        /* Table styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        /* Action buttons styles */
+        .action-buttons button {
+            margin-right: 5px;
+            padding: 8px 12px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .action-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'app:trip_form' %}">Rider Form</a>
+        <a href="{% url 'app:logout' %}" class="right">Logout</a>
+    </div>
+    <h2>Userdetails List</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Start</th>
+            <th>Destination</th>
+            <th>Via</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Car Name</th>
+            <th>Start Date/Time</th>
+            <th>Total price</th>
+            <th>Price/km</th>
+            <th>Actions</th>
+        </tr>
+        {% for userdetail in userdetails %}
+        <tr>
+            <td>{{ userdetail.Name }}</td>
+            <td>{{ userdetail.start }}</td>
+            <td>{{ userdetail.destination }}</td>
+            <td>{{ userdetail.via }}</td>
+            <td>{{ userdetail.phone_number }}</td>
+            <td>{{ userdetail.email }}</td>
+            <td>{{ userdetail.car_name }}</td>
+            <td>{{ userdetail.start_date_time }}</td>
+            <td>Rs.{{ userdetail.price }}/-</td>
+            <td>Rs.{{ userdetail.distance_per_km }} /km</td>
+            <td class="action-buttons">
+                <form method="post" action="{% url 'app:accept' userdetail.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Accept</button>
+                </form>
+                <form method="post" action="{% url 'app:reject' userdetail.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Reject</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

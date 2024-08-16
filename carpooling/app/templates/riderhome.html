@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://img.freepik.com/free-photo/sports-car-driving-asphalt-road-night-generative-ai_188544-8052.jpg?t=st=1714032864~exp=1714036464~hmac=8e1d5037a6593c64c8c9c8d359453cecbc3adca82d97cdc8323727eaf60f535e&w=900");
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+    
+            color: #fff;
+            font-size: 36px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 40px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome Rider</h1>
+      <a href="{% url 'app:login' %}"><button type="submit">Login</button></a>
+      <a href="{% url 'app:register' %}"><button type="submit">Register</button></a>
+</body>
+</html>

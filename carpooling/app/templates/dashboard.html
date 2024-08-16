@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Registered Riders</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <!-- Add more fields as needed -->
+        </tr>
+        {% for rider in riders %}
+        <tr>
+            <td>{{ rider.name }}</td>
+            <td>{{ rider.email }}</td>
+            <!-- Add more fields as needed -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>

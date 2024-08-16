@@ -1,0 +1,28 @@
+    /* Add your CSS styles here */
+    .col-md-6 {
+        /* Your styles for .col-md-6 here */
+        background-color: #f0f0f0;
+        padding: 10px;
+    }
+
+    .btn-outline-info {
+        /* Your styles for .btn-outline-info here */
+        background-color: #17a2b8;
+        color: #fff;
+    }
+
+    img.border.rounded-pill {
+        /* Your styles for .border.rounded-pill here */
+        border: 2px solid #17a2b8;
+        border-radius: 50%;
+    }
+/* Example custom media query for small screens */
+@media screen and (max-width: 768px) {
+    /* Add your responsive styles here */
+    .social-media-buttons {
+        text-align: center;
+    }
+    .social-media-button {
+        margin: 5px; /* Adjust spacing between buttons */
+    }
+}

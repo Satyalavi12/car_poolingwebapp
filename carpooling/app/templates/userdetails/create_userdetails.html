@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Userdetails</title>
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/premium-photo/automobile-model-with-red-body-black-bumper_1095915-31349.jpg?w=1060");
+            color: red;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex; /* Flexbox to center align */
+            justify-content: center; /* Horizontally center align */
+            align-items: center; /* Vertically center align */
+            height: 100vh; /* Make the body full height of the viewport */
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            padding-right:20px ;
+        }
+
+        .navbar a:last-child {
+            margin-right: 0;
+        }
+
+        .content {
+            padding-top: 50px; /* Adjust according to navbar height */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Set a fixed width for the form */
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px; /* Adjust the margin as needed */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'app:logout' %}" style="float: right;">Logout</a>&nbsp;&nbsp;
+        <!-- Assuming this is a template file where you want to include the SOS link -->
+        {% if user.is_authenticated %}
+        <a href="{% url 'app:sos' %}" style="float: right;">SOS</a>
+        {% endif %}
+    </div>
+
+    <div class="content">
+        <h2>Create Userdetails</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
